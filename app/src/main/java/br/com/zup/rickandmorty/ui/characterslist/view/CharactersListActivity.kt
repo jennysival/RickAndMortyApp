@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import androidx.core.os.bundleOf
+import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import br.com.zup.rickandmorty.R
@@ -52,6 +53,15 @@ class CharactersListActivity : AppCompatActivity() {
                 }
                 is ViewState.Error -> {
                     Toast.makeText(this, "${it.errorMsg.message}", Toast.LENGTH_LONG).show()
+                }
+                else -> {}
+            }
+        }
+
+        viewModel.loading.observe(this) {
+            when (it) {
+                is ViewState.Loading -> {
+                    binding.loadingBar.isVisible = it.loading == true
                 }
                 else -> {}
             }
