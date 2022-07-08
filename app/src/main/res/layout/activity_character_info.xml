@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@color/dark_blue">
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context=".ui.characterinfo.view.CharacterInfoActivity">
+
+    <ImageView
+        android:id="@+id/iv_characterImageDetail"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/height_250"
+        android:contentDescription="@string/descrip_imagem_do_personagem"
+        android:scaleType="centerCrop"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@drawable/rick_morty" />
+
+    <TextView
+        android:id="@+id/tv_characterName"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        tools:text="Nome: Rick"
+        android:textSize="@dimen/fontSize_15"
+        android:textStyle="bold"
+        android:textAlignment="textStart"
+        android:textColor="@color/white"
+        android:layout_margin="@dimen/margin_16"
+        app:layout_constraintTop_toBottomOf="@id/iv_characterImageDetail"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_characterStatus"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        tools:text="Status: Alive"
+        android:textSize="@dimen/fontSize_15"
+        android:textStyle="bold"
+        android:textAlignment="textStart"
+        android:textColor="@color/white"
+        android:layout_margin="@dimen/margin_16"
+        app:layout_constraintTop_toBottomOf="@id/tv_characterName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_characterSpecies"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        tools:text="Espécie: Human"
+        android:textSize="@dimen/fontSize_15"
+        android:textStyle="bold"
+        android:textAlignment="textStart"
+        android:textColor="@color/white"
+        android:layout_margin="@dimen/margin_16"
+        app:layout_constraintTop_toBottomOf="@id/tv_characterStatus"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_characterGender"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        tools:text="Gênero: Male"
+        android:textSize="@dimen/fontSize_15"
+        android:textStyle="bold"
+        android:textAlignment="textStart"
+        android:textColor="@color/white"
+        android:layout_margin="@dimen/margin_16"
+        app:layout_constraintTop_toBottomOf="@id/tv_characterSpecies"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
