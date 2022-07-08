@@ -1,22 +1,15 @@
 package br.com.zup.rickandmorty.ui.characterslist.view
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
-import androidx.core.os.bundleOf
 import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
-import br.com.zup.rickandmorty.R
 import br.com.zup.rickandmorty.data.model.CharacterResult
 import br.com.zup.rickandmorty.databinding.ActivityCharactersListBinding
-import br.com.zup.rickandmorty.ui.characterinfo.view.CharacterInfoActivity
-import br.com.zup.rickandmorty.ui.characterslist.adapter.CharacterAdapter
 import br.com.zup.rickandmorty.ui.characterslist.viewmodel.CharacterListViewModel
 import br.com.zup.rickandmorty.ui.viewstate.ViewState
-import br.com.zup.rickandmorty.utils.BUNDLE_KEY
-import br.com.zup.rickandmorty.utils.CHAR_KEY
 
 class CharactersListActivity : AppCompatActivity() {
 
@@ -27,13 +20,17 @@ class CharactersListActivity : AppCompatActivity() {
     }
 
     private val characterAdapter: CharacterAdapter by lazy {
-        CharacterAdapter(arrayListOf(), this::goToCharacterInfo)
+        CharacterAdapter(mutableListOf(), this::goToCharacterInfo)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityCharactersListBinding.inflate(layoutInflater)
         setContentView(binding.root)
+    }
+
+    override fun onResume() {
+        super.onResume()
         viewModel.getAllCharactersNetwork()
         showRecyclerView()
     }
@@ -49,7 +46,7 @@ class CharactersListActivity : AppCompatActivity() {
         viewModel.characterListState.observe(this){
             when(it){
                 is ViewState.Success -> {
-                    characterAdapter.updateCharacterList(it.data)
+                    characterAdapter.updateCharacterList(it.data as MutableList<CharacterResult>)
                 }
                 is ViewState.Error -> {
                     Toast.makeText(this, "${it.errorMsg.message}", Toast.LENGTH_LONG).show()
@@ -70,9 +67,6 @@ class CharactersListActivity : AppCompatActivity() {
 
     private fun goToCharacterInfo(character: CharacterResult){
 
-        val intent = Intent(this, CharacterInfoActivity::class.java)
-        intent.putExtra(CHAR_KEY,character)
-        startActivity(intent)
     }
 
 }

@@ -1,27 +1,16 @@
-package br.com.zup.rickandmorty.ui.characterslist.adapter
+package br.com.zup.rickandmorty.ui.characterslist.view
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import br.com.zup.rickandmorty.data.datasource.remote.RetrofitService.Companion.BASE_URL
-import br.com.zup.rickandmorty.data.model.CharacterResponse
 import br.com.zup.rickandmorty.data.model.CharacterResult
 import br.com.zup.rickandmorty.databinding.CharacterItemBinding
 import com.squareup.picasso.Picasso
 
 class CharacterAdapter(
-    private var characterList: MutableList<CharacterResult>,
+    var characterList: MutableList<CharacterResult> = mutableListOf(),
     private val clickCharacter: (character: CharacterResult) -> Unit,
 ): RecyclerView.Adapter<CharacterAdapter.ViewHolder>() {
-
-    class ViewHolder(val binding: CharacterItemBinding): RecyclerView.ViewHolder(binding.root){
-
-        fun showCharacter(character: CharacterResult){
-            binding.tvCharacterName.text = character.name
-            Picasso.get().load(character.image).into(binding.ivCharacterImage)
-        }
-
-    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding = CharacterItemBinding.inflate(LayoutInflater.from(parent.context), parent,false)
@@ -38,15 +27,18 @@ class CharacterAdapter(
 
     override fun getItemCount() = characterList.size
 
-    fun updateCharacterList(newList: List<CharacterResult>){
-        if(characterList.size == 0){
-            characterList = newList as MutableList<CharacterResult>
-        }
-        else{
-            characterList = mutableListOf<CharacterResult>()
-            characterList.addAll(newList)
-        }
+    fun updateCharacterList(newList: MutableList<CharacterResult>){
+        characterList = newList
         notifyDataSetChanged()
+    }
+
+    class ViewHolder(val binding: CharacterItemBinding): RecyclerView.ViewHolder(binding.root){
+
+        fun showCharacter(character: CharacterResult){
+            Picasso.get().load(character.image).into(binding.ivCharacterImage)
+            binding.tvCharacterName.text = character.name
+        }
+
     }
 
 }

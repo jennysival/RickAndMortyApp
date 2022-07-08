@@ -13,8 +13,9 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 class CharacterListViewModel(application: Application): AndroidViewModel(application) {
-    private val characterUseCase = CharacterUseCase()
-    val characterListState = SingleLiveEvent<ViewState<List<CharacterResult>>>()
+    val characterUseCase = CharacterUseCase(application)
+    private val _characterListState = SingleLiveEvent<ViewState<List<CharacterResult>>>()
+    val characterListState = _characterListState
     val loading = SingleLiveEvent<ViewState<Boolean>>()
 
     fun getAllCharactersNetwork(){
@@ -24,10 +25,10 @@ class CharacterListViewModel(application: Application): AndroidViewModel(applica
                 val response = withContext(Dispatchers.IO){
                     characterUseCase.getAllCharactersNetwork()
                 }
-                characterListState.value = response
+                _characterListState.value = response
             }
             catch (ex: Exception){
-                characterListState.value = ViewState.Error(Throwable("Não foi possível carregar a lista de personagens!"))
+                _characterListState.value = ViewState.Error(Throwable("Não foi possível carregar a lista de personagens!"))
             }
             finally {
                 loading.value = ViewState.Loading(false)
