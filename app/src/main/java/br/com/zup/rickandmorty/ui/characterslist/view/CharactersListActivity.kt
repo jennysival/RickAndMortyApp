@@ -48,7 +48,7 @@ class CharactersListActivity : AppCompatActivity() {
         viewModel.characterListState.observe(this){
             when(it){
                 is ViewState.Success -> {
-                    characterAdapter.updateCharacterList(it.data.toMutableList())
+                    characterAdapter.updateCharacterList(it.data as MutableList<CharacterResult>)
                 }
                 is ViewState.Error -> {
                     Toast.makeText(this, "${it.errorMsg.message}", Toast.LENGTH_LONG).show()
@@ -61,7 +61,7 @@ class CharactersListActivity : AppCompatActivity() {
     private fun goToCharacterInfo(character: CharacterResult){
         val bundle = bundleOf(CHAR_KEY to character)
         val intent = Intent(this, CharacterInfoActivity::class.java)
-        intent.putExtra(BUNDLE_KEY,bundle)
+        intent.putExtra(CHAR_KEY,character)
         startActivity(intent)
     }
 
