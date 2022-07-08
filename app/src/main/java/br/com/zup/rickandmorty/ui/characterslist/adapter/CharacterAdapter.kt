@@ -3,9 +3,11 @@ package br.com.zup.rickandmorty.ui.characterslist.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import br.com.zup.rickandmorty.data.datasource.remote.RetrofitService.Companion.BASE_URL
 import br.com.zup.rickandmorty.data.model.CharacterResponse
 import br.com.zup.rickandmorty.data.model.CharacterResult
 import br.com.zup.rickandmorty.databinding.CharacterItemBinding
+import com.squareup.picasso.Picasso
 
 class CharacterAdapter(
     private var characterList: MutableList<CharacterResult>,
@@ -16,7 +18,7 @@ class CharacterAdapter(
 
         fun showCharacter(character: CharacterResult){
             binding.tvCharacterName.text = character.name
-            //TODO Adicionar imagem da API com picasso
+            Picasso.get().load(character.image).into(binding.ivCharacterImage)
         }
 
     }
