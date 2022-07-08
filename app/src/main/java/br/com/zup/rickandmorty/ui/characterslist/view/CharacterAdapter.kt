@@ -13,7 +13,7 @@ class CharacterAdapter(
 ): RecyclerView.Adapter<CharacterAdapter.ViewHolder>() {
 
     class ViewHolder(val binding: CharacterItemBinding): RecyclerView.ViewHolder(binding.root){
-        fun exibirPersonagem(character: CharacterResult){
+        fun showCharacter(character: CharacterResult){
             binding.tvCharacterName.text = character.name
             Picasso.get().load(character.image).into(binding.ivCharacterImage)
         }
@@ -26,11 +26,10 @@ class CharacterAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val character = characterList[position]
-        holder.exibirPersonagem(character)
+        holder.showCharacter(character)
         holder.binding.cvItemList.setOnClickListener {
             characterClick(character)
         }
-        holder.exibirPersonagem(character)
     }
 
     override fun getItemCount(): Int {

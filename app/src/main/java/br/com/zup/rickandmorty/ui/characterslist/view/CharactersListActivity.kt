@@ -28,9 +28,10 @@ class CharactersListActivity : AppCompatActivity() {
         binding = ActivityCharactersListBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        showRecyclerView()
         viewModel.getAllCharactersNetwork()
         initObserver()
-        showRecyclerView()
+
     }
 
     private fun showRecyclerView(){

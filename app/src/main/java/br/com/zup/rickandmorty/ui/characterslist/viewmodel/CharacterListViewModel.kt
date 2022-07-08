@@ -14,7 +14,7 @@ import kotlinx.coroutines.withContext
 
 class CharacterListViewModel(application: Application): AndroidViewModel(application) {
     private val characterUseCase = CharacterUseCase(application)
-    val characterListState = MutableLiveData<ViewState<List<CharacterResult>>>()
+    val characterListState = SingleLiveEvent<ViewState<List<CharacterResult>>>()
     val loading = SingleLiveEvent<ViewState<Boolean>>()
 
     fun getAllCharactersNetwork(){
