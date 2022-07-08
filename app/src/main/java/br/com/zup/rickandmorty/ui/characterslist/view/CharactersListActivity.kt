@@ -19,26 +19,25 @@ class CharactersListActivity : AppCompatActivity() {
         ViewModelProvider(this)[CharacterListViewModel::class.java]
     }
 
-    private val characterAdapter: CharacterAdapter by lazy {
-        CharacterAdapter(mutableListOf(), this::goToCharacterInfo)
+    private val adapter: CharacterAdapter by lazy {
+        CharacterAdapter(arrayListOf(), this::goToCharacterInfo)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityCharactersListBinding.inflate(layoutInflater)
         setContentView(binding.root)
-    }
 
-    override fun onResume() {
-        super.onResume()
         viewModel.getAllCharactersNetwork()
+        initObserver()
         showRecyclerView()
     }
 
     private fun showRecyclerView(){
-        initObserver()
-        binding.rvCharactersList.adapter = characterAdapter
-        binding.rvCharactersList.layoutManager = GridLayoutManager(this,2)
+        binding.rvCharactersList.apply {
+            adapter = adapter
+            layoutManager = GridLayoutManager(context,2)
+        }
     }
 
     private fun initObserver(){
@@ -46,7 +45,7 @@ class CharactersListActivity : AppCompatActivity() {
         viewModel.characterListState.observe(this){
             when(it){
                 is ViewState.Success -> {
-                    characterAdapter.updateCharacterList(it.data as MutableList<CharacterResult>)
+                    adapter.updateCharacterList(it.data as MutableList<CharacterResult>)
                 }
                 is ViewState.Error -> {
                     Toast.makeText(this, "${it.errorMsg.message}", Toast.LENGTH_LONG).show()

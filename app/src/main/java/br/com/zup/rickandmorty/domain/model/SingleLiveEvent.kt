@@ -1,4 +1,4 @@
-package br.com.zup.rickandmorty.domain
+package br.com.zup.rickandmorty.domain.model
 
 import android.util.Log
 import androidx.annotation.MainThread
