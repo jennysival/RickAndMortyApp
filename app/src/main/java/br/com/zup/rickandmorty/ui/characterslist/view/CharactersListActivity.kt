@@ -27,29 +27,29 @@ class CharactersListActivity : AppCompatActivity() {
     }
 
     private val characterAdapter: CharacterAdapter by lazy {
-        CharacterAdapter(arrayListOf(), ::goToCharacterInfo)
+        CharacterAdapter(arrayListOf(), this::goToCharacterInfo)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityCharactersListBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-        showRecyclerView()
         viewModel.getAllCharactersNetwork()
-        initObserver()
+        showRecyclerView()
     }
 
     private fun showRecyclerView(){
+        initObserver()
         binding.rvCharactersList.adapter = characterAdapter
         binding.rvCharactersList.layoutManager = GridLayoutManager(this,2)
     }
 
     private fun initObserver(){
+
         viewModel.characterListState.observe(this){
             when(it){
                 is ViewState.Success -> {
-                    characterAdapter.updateCharacterList(it.data as MutableList<CharacterResult>)
+                    characterAdapter.updateCharacterList(it.data)
                 }
                 is ViewState.Error -> {
                     Toast.makeText(this, "${it.errorMsg.message}", Toast.LENGTH_LONG).show()
@@ -69,7 +69,7 @@ class CharactersListActivity : AppCompatActivity() {
     }
 
     private fun goToCharacterInfo(character: CharacterResult){
-        val bundle = bundleOf(CHAR_KEY to character)
+
         val intent = Intent(this, CharacterInfoActivity::class.java)
         intent.putExtra(CHAR_KEY,character)
         startActivity(intent)

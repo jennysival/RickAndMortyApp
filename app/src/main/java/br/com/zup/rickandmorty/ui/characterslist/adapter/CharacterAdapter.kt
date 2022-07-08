@@ -11,7 +11,7 @@ import com.squareup.picasso.Picasso
 
 class CharacterAdapter(
     private var characterList: MutableList<CharacterResult>,
-    private val clickCharacter: (character: CharacterResult) -> Unit
+    private val clickCharacter: (character: CharacterResult) -> Unit,
 ): RecyclerView.Adapter<CharacterAdapter.ViewHolder>() {
 
     class ViewHolder(val binding: CharacterItemBinding): RecyclerView.ViewHolder(binding.root){
@@ -24,7 +24,7 @@ class CharacterAdapter(
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val binding = CharacterItemBinding.inflate(LayoutInflater.from(parent.context),parent,false)
+        val binding = CharacterItemBinding.inflate(LayoutInflater.from(parent.context), parent,false)
         return ViewHolder(binding)
     }
 
@@ -36,10 +36,16 @@ class CharacterAdapter(
         }
     }
 
-    override fun getItemCount(): Int = characterList.size
+    override fun getItemCount() = characterList.size
 
-    fun updateCharacterList(newList: MutableList<CharacterResult>){
-        characterList = newList
+    fun updateCharacterList(newList: List<CharacterResult>){
+        if(characterList.size == 0){
+            characterList = newList as MutableList<CharacterResult>
+        }
+        else{
+            characterList = mutableListOf<CharacterResult>()
+            characterList.addAll(newList)
+        }
         notifyDataSetChanged()
     }
 

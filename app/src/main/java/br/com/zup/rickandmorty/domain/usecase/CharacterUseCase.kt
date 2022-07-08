@@ -5,14 +5,14 @@ import br.com.zup.rickandmorty.data.model.CharacterResult
 import br.com.zup.rickandmorty.domain.repository.CharacterRepository
 import br.com.zup.rickandmorty.ui.viewstate.ViewState
 
-class CharacterUseCase(application: Application) {
+class CharacterUseCase() {
     private val repository = CharacterRepository()
 
     suspend fun getAllCharactersNetwork(): ViewState<List<CharacterResult>>{
         return try {
             val response = repository.getAllCharactersNetwork()
             ViewState.Success(response.characterResults)
-        }catch (ex: Exception){
+        }catch (e: Exception){
             ViewState.Error(Exception("Não foi possível carregar a lista"))
         }
     }
