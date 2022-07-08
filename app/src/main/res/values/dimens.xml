@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="margem_16">16dp</dimen>
+    <dimen name="altura_150">150dp</dimen>
+    <dimen name="largura_150">150dp</dimen>
+    <dimen name="fonte_14">14sp</dimen>
+    <dimen name="margem_8">8dp</dimen>
 </resources>
