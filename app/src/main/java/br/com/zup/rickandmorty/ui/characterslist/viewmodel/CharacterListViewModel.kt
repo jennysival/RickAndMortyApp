@@ -5,6 +5,7 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import br.com.zup.rickandmorty.data.model.CharacterResult
+import br.com.zup.rickandmorty.domain.SingleLiveEvent
 import br.com.zup.rickandmorty.domain.usecase.CharacterUseCase
 import br.com.zup.rickandmorty.ui.viewstate.ViewState
 import kotlinx.coroutines.Dispatchers
@@ -13,7 +14,7 @@ import kotlinx.coroutines.withContext
 
 class CharacterListViewModel(application: Application): AndroidViewModel(application) {
     private val characterUseCase = CharacterUseCase(application)
-    val characterListState = MutableLiveData<ViewState<List<CharacterResult>>>()
+    val characterListState = SingleLiveEvent<ViewState<List<CharacterResult>>>()
 
     fun getAllCharactersNetwork(){
         viewModelScope.launch {

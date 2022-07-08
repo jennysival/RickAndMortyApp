@@ -30,7 +30,7 @@
         </activity>
         <activity
             android:name=".ui.characterslist.view.CharactersListActivity"
-            android:exported="true"/>
+            android:exported="false"/>
     </application>
 
 </manifest>
