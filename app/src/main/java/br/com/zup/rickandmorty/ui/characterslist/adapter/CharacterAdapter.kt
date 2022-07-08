@@ -3,19 +3,19 @@ package br.com.zup.rickandmorty.ui.characterslist.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import br.com.zup.rickandmorty.data.CharacterResponse
+import br.com.zup.rickandmorty.data.model.CharacterResponse
+import br.com.zup.rickandmorty.data.model.CharacterResult
 import br.com.zup.rickandmorty.databinding.CharacterItemBinding
-import com.squareup.picasso.Picasso
 
 class CharacterAdapter(
-    private var characterList: MutableList<CharacterResponse>,
-    private val clickCharacter: (character: CharacterResponse) -> Unit
+    private var characterList: MutableList<CharacterResult>,
+    private val clickCharacter: (character: CharacterResult) -> Unit
 ): RecyclerView.Adapter<CharacterAdapter.ViewHolder>() {
 
     class ViewHolder(val binding: CharacterItemBinding): RecyclerView.ViewHolder(binding.root){
 
-        fun showCharacter(character: CharacterResponse){
-            binding.tvCharacterName.text = character.nome
+        fun showCharacter(character: CharacterResult){
+            binding.tvCharacterName.text = character.name
             //TODO Adicionar imagem da API com picasso
         }
 
@@ -36,7 +36,7 @@ class CharacterAdapter(
 
     override fun getItemCount(): Int = characterList.size
 
-    fun updateCharacterList(newList: MutableList<CharacterResponse>){
+    fun updateCharacterList(newList: MutableList<CharacterResult>){
         characterList = newList
         notifyDataSetChanged()
     }
