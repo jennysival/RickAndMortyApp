@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Rick and Morty</string>
+    <string name="descrip_rickAndMorty_image">Imagem de Rick e Morty em um planeta estranho e colorido</string>
 </resources>
