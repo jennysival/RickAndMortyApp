@@ -20,7 +20,7 @@ class CharacterUseCase(application: Application) {
         }
     }
 
-    suspend fun getAllCharactersDao(): ViewState<List<CharacterResult>>{
+    private suspend fun getAllCharactersDao(): ViewState<List<CharacterResult>>{
         return try {
             val characters = repository.getAllCharactersDao()
             ViewState.Success(characters)

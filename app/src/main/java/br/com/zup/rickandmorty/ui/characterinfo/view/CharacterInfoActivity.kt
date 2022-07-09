@@ -3,10 +3,8 @@ package br.com.zup.rickandmorty.ui.characterinfo.view
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
-import br.com.zup.rickandmorty.R
 import br.com.zup.rickandmorty.data.model.CharacterResult
 import br.com.zup.rickandmorty.databinding.ActivityCharacterInfoBinding
-import br.com.zup.rickandmorty.utils.BUNDLE_KEY
 import br.com.zup.rickandmorty.utils.CHAR_KEY
 import com.squareup.picasso.Picasso
 
