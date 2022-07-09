@@ -18,21 +18,21 @@ class CharacterInfoActivity : AppCompatActivity() {
         binding = ActivityCharacterInfoBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-//        getData()
+        getData()
     }
 
-//    private fun getData(){
-////        val character = intent.getParcelableExtra<CharacterResult>(CHAR_KEY)
-//
-//        character?.let {
-//            Picasso.get().load(it.image).into(binding.ivCharacterImageDetail)
-//
-//            binding.tvCharacterName.text = it.name
-//            binding.tvCharacterGender.text = it.gender
-//            binding.tvCharacterSpecies.text = it.species
-//            binding.tvCharacterStatus.text = it.status
-//
-//            this.supportActionBar?.title = it.name
-//        }
-//    }
+    private fun getData(){
+        val character = intent.getParcelableExtra<CharacterResult>(CHAR_KEY)
+
+        character?.let {
+            Picasso.get().load(it.image).into(binding.ivCharacterImageDetail)
+
+            binding.tvCharacterName.text = it.name
+            binding.tvCharacterGender.text = it.gender
+            binding.tvCharacterSpecies.text = it.species
+            binding.tvCharacterStatus.text = it.status
+
+            this.supportActionBar?.title = it.name
+        }
+    }
 }

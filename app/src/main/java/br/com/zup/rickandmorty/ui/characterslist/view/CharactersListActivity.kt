@@ -1,5 +1,6 @@
 package br.com.zup.rickandmorty.ui.characterslist.view
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -7,8 +8,10 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import br.com.zup.rickandmorty.data.model.CharacterResult
 import br.com.zup.rickandmorty.databinding.ActivityCharactersListBinding
+import br.com.zup.rickandmorty.ui.characterinfo.view.CharacterInfoActivity
 import br.com.zup.rickandmorty.ui.characterslist.viewmodel.CharacterListViewModel
 import br.com.zup.rickandmorty.ui.viewstate.ViewState
+import br.com.zup.rickandmorty.utils.CHAR_KEY
 
 class CharactersListActivity : AppCompatActivity() {
 
@@ -55,7 +58,9 @@ class CharactersListActivity : AppCompatActivity() {
     }
 
     private fun goToCharacterInfo(character: CharacterResult){
-
+        val intent = Intent(this, CharacterInfoActivity::class.java)
+        intent.putExtra(CHAR_KEY,character)
+        startActivity(intent)
     }
 
 }
