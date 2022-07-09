@@ -31,5 +31,8 @@ data class CharacterResult(
     @SerializedName("type")
     var type: String = "",
     @SerializedName("url")
-    var url: String = ""
+    var url: String = "",
+
+    var favorite: Boolean = false
+
 ) : Parcelable
