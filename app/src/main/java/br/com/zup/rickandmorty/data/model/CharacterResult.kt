@@ -7,24 +7,22 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class CharacterResult(
-    @SerializedName("created")
-    val created: String,
-    @SerializedName("episode")
-    val episode: List<String>,
-    @SerializedName("gender")
-    val gender: String,
     @SerializedName("id")
-    val id: Int,
+    var id: Int = 0,
+    @SerializedName("created")
+    var created: String = "",
+    @SerializedName("gender")
+    var gender: String = "",
     @SerializedName("image")
-    val image: String,
+    var image: String = "",
     @SerializedName("name")
-    val name: String,
+    var name: String = "",
     @SerializedName("species")
-    val species: String,
+    var species: String = "",
     @SerializedName("status")
-    val status: String,
+    var status: String = "",
     @SerializedName("type")
-    val type: String,
+    var type: String = "",
     @SerializedName("url")
-    val url: String
-):Parcelable
+    var url: String = ""
+) : Parcelable

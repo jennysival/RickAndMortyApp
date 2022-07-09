@@ -10,8 +10,8 @@ class CharacterUseCase(application: Application) {
 
     suspend fun getAllCharactersNetwork(): ViewState<List<CharacterResult>>{
         return try {
-            val response = repository.getAllCharactersNetwork()
-            ViewState.Success(response.characterResults)
+            val characters = repository.getAllCharactersNetwork()
+            ViewState.Success(characters.characterResults)
         }catch (e: Exception){
             ViewState.Error(Exception("Não foi possível carregar a lista"))
         }

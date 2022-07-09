@@ -33,6 +33,6 @@ class RetrofitService {
 
         @JvmStatic
         val apiService: RickAndMortyAPI
-            get() = retrofit.create(RickAndMortyAPI::class.java)
+        get() = retrofit.create(RickAndMortyAPI::class.java)
     }
 }

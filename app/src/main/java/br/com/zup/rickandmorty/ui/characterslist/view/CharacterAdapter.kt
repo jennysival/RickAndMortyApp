@@ -8,14 +8,14 @@ import br.com.zup.rickandmorty.databinding.CharacterItemBinding
 import com.squareup.picasso.Picasso
 
 class CharacterAdapter(
-    private var characterList: MutableList<CharacterResult>,
+    private var characterList: MutableList<CharacterResult> = mutableListOf(),
     private val characterClick: (character: CharacterResult) -> Unit
 ): RecyclerView.Adapter<CharacterAdapter.ViewHolder>() {
 
     class ViewHolder(val binding: CharacterItemBinding): RecyclerView.ViewHolder(binding.root){
         fun showCharacter(character: CharacterResult){
-            binding.tvCharacterName.text = character.name
             Picasso.get().load(character.image).into(binding.ivCharacterImage)
+            binding.tvCharacterName.text = character.name
         }
     }
 
@@ -32,17 +32,11 @@ class CharacterAdapter(
         }
     }
 
-    override fun getItemCount(): Int {
-        return characterList.size
-    }
+    override fun getItemCount() = characterList.size
 
-    fun updateCharacterList(newList: List<CharacterResult>){
-        if (characterList.size == 0){
-            characterList = newList as MutableList<CharacterResult>
-        }else{
-            characterList = mutableListOf()
-            characterList.addAll(newList)
-        }
+
+    fun updateCharacterList(newList: MutableList<CharacterResult>){
+        characterList = newList
         notifyDataSetChanged()
     }
 }
