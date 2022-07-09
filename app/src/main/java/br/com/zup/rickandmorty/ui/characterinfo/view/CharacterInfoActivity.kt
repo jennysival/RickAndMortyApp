@@ -26,11 +26,10 @@ class CharacterInfoActivity : AppCompatActivity() {
 
         character?.let {
             Picasso.get().load(it.image).into(binding.ivCharacterImageDetail)
-
-            binding.tvCharacterName.text = it.name
-            binding.tvCharacterGender.text = it.gender
-            binding.tvCharacterSpecies.text = it.species
-            binding.tvCharacterStatus.text = it.status
+            binding.tvCharacterName.text = "Nome: " + it.name
+            binding.tvCharacterGender.text = "Gênero: " + it.gender
+            binding.tvCharacterSpecies.text = "Espécie: " + it.species
+            binding.tvCharacterStatus.text = "Status: " + it.status
 
             this.supportActionBar?.title = it.name
         }
