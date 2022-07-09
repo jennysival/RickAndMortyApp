@@ -2,6 +2,7 @@ package br.com.zup.rickandmorty.ui.characterinfo.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.MenuItem
 import br.com.zup.rickandmorty.R
 import br.com.zup.rickandmorty.data.model.CharacterResult
 import br.com.zup.rickandmorty.databinding.ActivityCharacterInfoBinding
@@ -17,6 +18,7 @@ class CharacterInfoActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityCharacterInfoBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         getData()
     }
@@ -33,5 +35,13 @@ class CharacterInfoActivity : AppCompatActivity() {
 
             this.supportActionBar?.title = it.name
         }
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == android.R.id.home) {
+            this.finish()
+            return true
+        }
+        return super.onOptionsItemSelected(item)
     }
 }
