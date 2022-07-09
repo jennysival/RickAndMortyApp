@@ -16,6 +16,9 @@
         android:theme="@style/Theme.RickAndMorty"
         tools:targetApi="31">
         <activity
+            android:name=".ui.favoritedcharacterslist.view.FavoritedCharactersListActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.splash.SplashActivity"
             android:exported="true"
             android:theme="@style/Theme.RickAndMorty.NoActionBar">
@@ -30,7 +33,7 @@
             android:exported="false" />
         <activity
             android:name=".ui.characterslist.view.CharactersListActivity"
-            android:exported="false"/>
+            android:exported="false" />
     </application>
 
 </manifest>
