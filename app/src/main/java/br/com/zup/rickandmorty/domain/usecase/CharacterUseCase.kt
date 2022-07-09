@@ -5,6 +5,7 @@ import br.com.zup.rickandmorty.data.datasource.local.CharacterDatabase
 import br.com.zup.rickandmorty.data.model.CharacterResult
 import br.com.zup.rickandmorty.domain.repository.CharacterRepository
 import br.com.zup.rickandmorty.ui.viewstate.ViewState
+import br.com.zup.rickandmorty.utils.OFFLINE_LIST_ERROR_MSG
 
 class CharacterUseCase(application: Application) {
     private val characterDao = CharacterDatabase.getCharacterDatabase(application).characterDao()
@@ -25,7 +26,7 @@ class CharacterUseCase(application: Application) {
             val characters = repository.getAllCharactersDao()
             ViewState.Success(characters)
         }catch (e: Exception){
-            ViewState.Error(Exception("Não foi possível carregar os personagens offline"))
+            ViewState.Error(Exception(OFFLINE_LIST_ERROR_MSG))
         }
     }
 }
