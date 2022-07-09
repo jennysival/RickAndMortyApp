@@ -13,6 +13,7 @@ class CharacterUseCase(application: Application) {
     suspend fun getAllCharactersNetwork(): ViewState<List<CharacterResult>>{
         return try {
             val characters = repository.getAllCharactersNetwork()
+            repository.insertAllCharactersDao(characters.characterResults)
             ViewState.Success(characters.characterResults)
         }catch (e: Exception){
             getAllCharactersDao()

@@ -11,4 +11,8 @@ class CharacterRepository(private val characterDao: CharacterDao) {
     }
 
     suspend fun getAllCharactersDao(): List<CharacterResult> = characterDao.getAllCharacters()
+
+    suspend fun insertAllCharactersDao(characterList: List<CharacterResult>){
+        characterDao.insertAllCharacters(characterList)
+    }
 }
