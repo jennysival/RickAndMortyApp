@@ -3,4 +3,5 @@
     <string name="descrip_rickAndMorty_image">Imagem de Rick e Morty em um planeta estranho e colorido</string>
     <string name="descrip_imagem_do_personagem">imagem do personagem</string>
     <string name="nome_do_personagem">Nome do Personagem</string>
+    <string name="text_estrela">estrela</string>
 </resources>
