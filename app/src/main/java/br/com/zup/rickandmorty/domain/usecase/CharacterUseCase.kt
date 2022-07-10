@@ -17,7 +17,7 @@ class CharacterUseCase(application: Application) {
         return try {
             val characters = repository.getAllCharactersNetwork()
             repository.insertAllCharactersDao(characters.characterResults)
-            ViewState.Success(characters.characterResults)
+            getAllCharactersDao()
         }catch (e: Exception){
             getAllCharactersDao()
         }

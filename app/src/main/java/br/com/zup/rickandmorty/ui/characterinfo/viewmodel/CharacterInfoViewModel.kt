@@ -14,7 +14,7 @@ import kotlinx.coroutines.withContext
 
 class CharacterInfoViewModel(application: Application): AndroidViewModel(application) {
     private val characterUseCase = CharacterUseCase(application)
-    val favoriteCharacterState = MutableLiveData<ViewState<CharacterResult>>()
+    private val favoriteCharacterState = MutableLiveData<ViewState<CharacterResult>>()
 
     fun updateFavoriteCharacter(character: CharacterResult){
         viewModelScope.launch {
