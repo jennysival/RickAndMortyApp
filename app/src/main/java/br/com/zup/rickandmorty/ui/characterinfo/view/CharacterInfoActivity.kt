@@ -33,8 +33,9 @@ class CharacterInfoActivity : AppCompatActivity() {
 
         binding.iconStar.setOnClickListener {
             character.favorite = !character.favorite
-            updateFavoriteCharacter()
+            updateFavoriteIconColor()
             viewModel.updateFavoriteCharacter(character)
+            showFavoriteUpdateToast()
         }
     }
 
@@ -51,7 +52,7 @@ class CharacterInfoActivity : AppCompatActivity() {
                     binding.tvCharacterGender.text = "Gênero: " + it.gender
                     binding.tvCharacterSpecies.text = "Espécie: " + it.species
                     binding.tvCharacterStatus.text = "Status: " + it.status
-                    updateFavoriteCharacter()
+                    updateFavoriteIconColor()
 
                     this.supportActionBar?.title = it.name
                 }
@@ -60,7 +61,7 @@ class CharacterInfoActivity : AppCompatActivity() {
         }
     }
 
-    private fun updateFavoriteCharacter(){
+    private fun updateFavoriteIconColor(){
         binding.iconStar.setImageDrawable(
             ContextCompat.getDrawable(
                 binding.root.context,
@@ -68,10 +69,13 @@ class CharacterInfoActivity : AppCompatActivity() {
                 else R.drawable.ic_baseline_star_rate_40
             )
         )
+    }
 
+    private fun showFavoriteUpdateToast(){
         if(character.favorite){
             Toast.makeText(this, "${character.name} foi favoritado com sucesso!", Toast.LENGTH_LONG).show()
-        }else{
+        }
+        else{
             Toast.makeText(this, "${character.name} foi desfavoritado", Toast.LENGTH_SHORT).show()
         }
     }
