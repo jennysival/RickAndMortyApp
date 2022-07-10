@@ -7,4 +7,6 @@
     <dimen name="margin_8">8dp</dimen>
     <dimen name="height_250">250dp</dimen>
     <dimen name="fontSize_15">15sp</dimen>
+    <dimen name="width_40">40dp</dimen>
+    <dimen name="height_40">40dp</dimen>
 </resources>

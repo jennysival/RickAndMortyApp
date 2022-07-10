@@ -34,7 +34,7 @@
         android:layout_margin="@dimen/margin_16"
         app:layout_constraintTop_toBottomOf="@id/iv_characterImageDetail"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toStartOf="@id/icon_star" />
 
     <TextView
         android:id="@+id/tv_characterStatus"
@@ -48,7 +48,7 @@
         android:layout_margin="@dimen/margin_16"
         app:layout_constraintTop_toBottomOf="@id/tv_characterName"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toStartOf="@id/icon_star" />
 
     <TextView
         android:id="@+id/tv_characterSpecies"
@@ -62,7 +62,7 @@
         android:layout_margin="@dimen/margin_16"
         app:layout_constraintTop_toBottomOf="@id/tv_characterStatus"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toStartOf="@id/icon_star" />
 
     <TextView
         android:id="@+id/tv_characterGender"
@@ -76,7 +76,20 @@
         android:layout_margin="@dimen/margin_16"
         app:layout_constraintTop_toBottomOf="@id/tv_characterSpecies"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toStartOf="@id/icon_star" />
+
+    <ImageView
+        android:id="@+id/icon_star"
+        android:layout_width="@dimen/width_40"
+        android:layout_height="@dimen/height_40"
+        android:layout_margin="@dimen/margin_16"
+        android:src="@drawable/ic_baseline_star_rate_40"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/iv_characterImageDetail"
+        app:layout_constraintVertical_bias="0.0"
+        android:contentDescription="@string/text_estrela" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
