@@ -13,6 +13,7 @@ import br.com.zup.rickandmorty.ui.characterinfo.view.CharacterInfoActivity
 import br.com.zup.rickandmorty.ui.favoritedcharacterslist.viewmodel.FavoritedCharactersListViewModel
 import br.com.zup.rickandmorty.ui.viewstate.ViewState
 import br.com.zup.rickandmorty.utils.CHAR_KEY
+import br.com.zup.rickandmorty.utils.FAV_TITLE
 
 class FavoritedCharactersListActivity : AppCompatActivity() {
 
@@ -32,6 +33,7 @@ class FavoritedCharactersListActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.title = FAV_TITLE
     }
 
     override fun onResume() {

@@ -12,6 +12,7 @@ import br.com.zup.rickandmorty.databinding.ActivityCharacterInfoBinding
 import br.com.zup.rickandmorty.ui.characterinfo.viewmodel.CharacterInfoViewModel
 import br.com.zup.rickandmorty.utils.CHAR_INFO_ERROR_MSG
 import br.com.zup.rickandmorty.utils.CHAR_KEY
+import br.com.zup.rickandmorty.utils.FAV_TITLE
 import com.squareup.picasso.Picasso
 
 class CharacterInfoActivity : AppCompatActivity() {
