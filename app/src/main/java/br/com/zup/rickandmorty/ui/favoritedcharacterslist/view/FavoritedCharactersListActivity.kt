@@ -7,14 +7,12 @@ import android.view.MenuItem
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
-import br.com.zup.rickandmorty.R
 import br.com.zup.rickandmorty.data.model.CharacterResult
 import br.com.zup.rickandmorty.databinding.ActivityFavoritedCharactersListBinding
 import br.com.zup.rickandmorty.ui.characterinfo.view.CharacterInfoActivity
 import br.com.zup.rickandmorty.ui.favoritedcharacterslist.viewmodel.FavoritedCharactersListViewModel
 import br.com.zup.rickandmorty.ui.viewstate.ViewState
 import br.com.zup.rickandmorty.utils.CHAR_KEY
-import br.com.zup.rickandmorty.utils.FAV_CHAR_KEY
 
 class FavoritedCharactersListActivity : AppCompatActivity() {
 
@@ -63,7 +61,7 @@ class FavoritedCharactersListActivity : AppCompatActivity() {
 
     private fun goToCharacterInfo(character: CharacterResult){
         val intent = Intent(this, CharacterInfoActivity::class.java)
-        intent.putExtra(FAV_CHAR_KEY,character)
+        intent.putExtra(CHAR_KEY,character)
         startActivity(intent)
     }
 

@@ -7,6 +7,7 @@ import androidx.lifecycle.viewModelScope
 import br.com.zup.rickandmorty.data.model.CharacterResult
 import br.com.zup.rickandmorty.domain.usecase.CharacterUseCase
 import br.com.zup.rickandmorty.ui.viewstate.ViewState
+import br.com.zup.rickandmorty.utils.FAV_LIST_ERROR_MSG
 import br.com.zup.rickandmorty.utils.LIST_ERROR_MSG
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

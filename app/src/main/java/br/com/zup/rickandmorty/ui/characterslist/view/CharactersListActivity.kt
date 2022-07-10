@@ -10,6 +10,7 @@ import br.com.zup.rickandmorty.data.model.CharacterResult
 import br.com.zup.rickandmorty.databinding.ActivityCharactersListBinding
 import br.com.zup.rickandmorty.ui.characterinfo.view.CharacterInfoActivity
 import br.com.zup.rickandmorty.ui.characterslist.viewmodel.CharacterListViewModel
+import br.com.zup.rickandmorty.ui.favoritedcharacterslist.view.FavoritedCharactersListActivity
 import br.com.zup.rickandmorty.ui.viewstate.ViewState
 import br.com.zup.rickandmorty.utils.CHAR_KEY
 
@@ -29,6 +30,10 @@ class CharactersListActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityCharactersListBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        binding.favButton.setOnClickListener {
+            goToFavoritedCharactersList()
+        }
     }
 
     override fun onResume() {
@@ -52,7 +57,6 @@ class CharactersListActivity : AppCompatActivity() {
                 is ViewState.Error -> {
                     Toast.makeText(this, "${it.throwable.message}", Toast.LENGTH_LONG).show()
                 }
-                else -> {}
             }
         }
     }
@@ -61,6 +65,11 @@ class CharactersListActivity : AppCompatActivity() {
         val intent = Intent(this, CharacterInfoActivity::class.java)
         intent.putExtra(CHAR_KEY,character)
         startActivity(intent)
+    }
+
+    private fun goToFavoritedCharactersList(){
+            val intent = Intent(this, FavoritedCharactersListActivity::class.java)
+            startActivity(intent)
     }
 
 }
